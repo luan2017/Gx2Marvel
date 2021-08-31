@@ -24,6 +24,7 @@ const CharactersList: React.FC = () => {
   const [openModal, setOpenModal] = useState(false);
   const [enableFavorites, setEnableFavorites] = useState(false);
   const [listCharacters, setListCharacters] = useState<Characters[]>([]);
+  const [listSearch, setListSearch] =  useState<Characters[]>([]);
   const listFavorites = (listCharacters?.length > 0 && listCharacters?.filter(carachter => carachter?.checked === true)) || []
 
   useEffect(()=> {
@@ -39,6 +40,7 @@ const CharactersList: React.FC = () => {
     if(characters.length > 0) {
       const newListCharacters =  characters.map(item => { return {...item, checked : false} })
       setListCharacters(newListCharacters)
+      setListSearch([...newListCharacters])
     }
   },[characters])
 
@@ -67,9 +69,17 @@ const CharactersList: React.FC = () => {
     setListCharacters(newList);
   }
 
+  const handleSearchCharacters = (name: string) => {
+    const newList = [...listCharacters]
+    if(name.length === 0) return setListCharacters(listSearch)
+    if(name.length > 0){
+      setListCharacters(newList.filter(cht => cht.name.toUpperCase().includes(name.toUpperCase())))
+    }
+  }
+
   return (
       <>
-        <Header handleEnableFavorites={handleEnableFavorites} handleDisableFavorites={handleDisableFavorites}/>
+        <Header handleEnableFavorites={handleEnableFavorites} handleDisableFavorites={handleDisableFavorites} handleSearchCharacters={handleSearchCharacters}/>
         <Title>{!enableFavorites ? 'Heróis' :  ' Heróis Favoritos'}</Title>
         <Container>
         <Grid>
