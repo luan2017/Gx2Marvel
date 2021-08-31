@@ -24,7 +24,7 @@ const Header: React.FC<HeaderProps> = ({handleEnableFavorites, handleDisableFavo
             <b>GX2</b>Marvel
         </h1>
     </a>
-        <div>
+        <div className='content'>
             <input
                 placeholder="Pesquisar personagem"
                 onChange={e => setSearchValue(e.target.value)}

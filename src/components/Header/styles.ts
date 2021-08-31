@@ -7,6 +7,12 @@ export const Head = styled.head`
     align-items: center;
     margin-bottom: 2.5vh;
 
+    .content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
 
     .title{
         font-size: 5vh;
@@ -24,7 +30,7 @@ export const Head = styled.head`
         outline: none;
         margin-right: 10px;
         width: auto;
-        min-width: 20vw;
+        min-width: 15vw;
     }
 
     @media screen and (min-width: 0px) and (max-width: 650px){
