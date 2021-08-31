@@ -13,12 +13,16 @@ export const Head = styled.head`
         justify-content: center;
     }
 
-
     .title{
         font-size: 5vh;
-        color: red;
+        color: var(--primary);
         font-weight: 300;
         cursor: pointer;
+
+        &:hover {
+            transition: 0.5s;
+            transform: scale(1.25);
+        }
     }
 
     .input{
@@ -41,7 +45,7 @@ export const Head = styled.head`
 export const ButtonFavorite = styled.button`
     cursor: pointer;
     font-weight: bold;
-    color: red;
+    color: var(--primary);
     border-radius: 5px;
     font-size: 16px;
     text-transform: uppercase;

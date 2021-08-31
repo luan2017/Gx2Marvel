@@ -32,11 +32,11 @@ export const Grid = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-family: cursive;
-    text-transform: lowercase;
+    color: var(--secondary);
+    text-transform: capitalize;
+    font-size: 16px;
+    font-weight: 400;
   }
-
 `;
 
 export const IconFavorite = styled.button`
@@ -53,15 +53,13 @@ export const Title = styled.div`
     justify-content: center;
     width: 100%;
     margin-bottom: 2rem;
-    font-family: "Comic Sans MS", cursive, sans-serif;
     font-size: 35px;
     letter-spacing: -1.4px;
     word-spacing: 1.8px;
-    color: red;
-    font-weight: 700;
+    color: var(--primary);
+    font-weight: 500;
     text-decoration: none solid rgb(68, 68, 68);
-    font-style: italic;
     font-variant: normal;
     border-bottom: solid 2px;
-    border-color: red;
+    border-color: var(--primary);
 `;
