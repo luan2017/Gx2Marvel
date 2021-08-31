@@ -3,6 +3,12 @@ Aplicação para listagem, busca e visualização de personagens dos quadrinhos 
 
 [![localhost-3000.png](https://i.postimg.cc/7YDS8wq8/localhost-3000.png)](https://postimg.cc/QV4FcLB0)
 
+## Visite o site :link:
+
+A aplicação pode ser visitada a qualquer momento pelo link: [https://marvel-app-alpha.vercel.app/](https://gx2-marvel.vercel.app/)
+
+Publicação realizada pelo [Vercel](https://vercel.com/).
+
 A aplicação foi construída utilizando **React.js** (React), **Typescript**, **Styled Components**, **Axios** e para padrão de código também foi configurado **EsLint** e **Prettier**. Todo o conteúdo sobre os personagens é fornecido pela API da **Marvel**(https://developer.marvel.com/).
 
 Além de listar, pesquisar e detalhar os personagens, foi implementada uma funcionalidade de favoritar cada personnagem, então após adicionar um personagem como favorito basta clicar no botão **Favoritos** que será listado todos os personagens selecionados.
