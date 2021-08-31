@@ -32,6 +32,8 @@ export const IconFavorite = styled.button`
     position: absolute;
     z-index: 2;
     cursor: pointer;
+    background-color: black;
+    border-radius: 10px;
 `;
  
 export const Title = styled.div`

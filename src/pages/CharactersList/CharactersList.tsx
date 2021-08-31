@@ -6,6 +6,7 @@ import CharacterDetails from '../CharacterDetails/CharacterDetails';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import { Container, Grid, Title, IconFavorite } from './styles';
+import Loading from '../../components/Loading/Loading';
 
 interface Characters {
   id: number;
@@ -82,9 +83,10 @@ const CharactersList: React.FC = () => {
         <Header handleEnableFavorites={handleEnableFavorites} handleDisableFavorites={handleDisableFavorites} handleSearchCharacters={handleSearchCharacters}/>
         <Title>{!enableFavorites ? 'Heróis' :  ' Heróis Favoritos'}</Title>
         <Container>
+          {listCharacters?.length > 0 ?
         <Grid>
               {
-                !enableFavorites && listCharacters?.length > 0 ? listCharacters.map((character) => (
+                !enableFavorites ? listCharacters.map((character) => (
                   <>
                   <div key={character?.id}>
                     <IconFavorite onClick={() => handleCheckFavorite(character?.id)} >{ !character.checked ? <FavoriteBorderIcon fontSize='medium' color='secondary' /> : <FavoriteIcon fontSize='medium' color='secondary'/>}</IconFavorite>
@@ -94,7 +96,7 @@ const CharactersList: React.FC = () => {
                   </div>
                   </>
                 )) : 
-                listFavorites?.length > 0 ? listFavorites.map((character) => (
+                listFavorites?.length > 0 && listFavorites.map((character) => (
                   <>
                   <div key={character?.id}>
                     <IconFavorite key={character?.id} onClick={() => handleCheckFavorite(character?.id)} >{ !character.checked ? <FavoriteBorderIcon fontSize='medium' color='secondary' /> : <FavoriteIcon fontSize='medium' color='secondary'/>}</IconFavorite>
@@ -103,9 +105,10 @@ const CharactersList: React.FC = () => {
                     </div>
                   </div>
                   </>
-                )) : <h4>Carregando...</h4>
+                )) 
               }
         </Grid>
+        : <Loading />}
         </Container>
         <CharacterDetails handleCloseCardDetails={handleCloseCardDetails} open={openModal} id={selectedId} />
     </>

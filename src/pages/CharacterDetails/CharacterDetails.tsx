@@ -7,6 +7,7 @@ import Dialog from '@material-ui/core/Dialog'
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import CloseIcon from '@material-ui/icons/Close';
+import Loading from '../../components/Loading/Loading';
 
 
 interface Character {
@@ -20,9 +21,9 @@ interface Character {
 
 interface Comics {
   title: string;
-  thumbnail: {
-    path: string;
-    extension: string;
+  thumbnail?: {
+    path?: string;
+    extension?: string;
   }
 }
 
@@ -35,17 +36,19 @@ interface CharacterDetailsProps {
 const CharacterDetails: React.FC<CharacterDetailsProps> = ({open, id, handleCloseCardDetails}: CharacterDetailsProps) => {
   const [characterDetails, setCharacterDetails] = useState<Character>();
   const [comics, setComics] = useState<Comics[]>([]);
+  const [loading, setLoading] = useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
 
   useEffect(() => { 
-
+    setLoading(true)
     if(id > 0){
       api.get(`characters/${id}?ts=${TIMESTAMP}&apikey=${API_KEY}&hash=${MD5}`)
       .then((response) => {
         setCharacterDetails(response.data.data.results[0]);
       }).catch((error) => {
+        setLoading(false)
         console.log(error);
       })
 
@@ -53,7 +56,9 @@ const CharacterDetails: React.FC<CharacterDetailsProps> = ({open, id, handleClos
       api.get(`characters/${id}/comics?ts=${TIMESTAMP}&apikey=${API_KEY}&hash=${MD5}`)
       .then((response) => {
         setComics(response.data.data.results);
+        setLoading(false)
       }).catch((error) => {
+        setLoading(false)
         console.log(error);
       })
     }
@@ -68,13 +73,12 @@ const CharacterDetails: React.FC<CharacterDetailsProps> = ({open, id, handleClos
       },
     })
 
-    // setComics([
-    //   {
-    //     title: '',
-    //     thumbnail: {
-    //     },
-    //   }
-    // ])
+    setComics([
+      {
+        title: '',
+        thumbnail: {},
+      }
+    ])
 
   },[handleCloseCardDetails])
 
@@ -93,6 +97,7 @@ const CharacterDetails: React.FC<CharacterDetailsProps> = ({open, id, handleClos
     <Container>
       <Title>DETALHES DO HERÓI</Title>
       {
+         loading ? <Loading /> : (
         <>
           {characterDetails && (
             <>
@@ -102,26 +107,22 @@ const CharacterDetails: React.FC<CharacterDetailsProps> = ({open, id, handleClos
                 </div>
                 <div className="context">
                   <div className="name">
-                    <h2>{characterDetails?.name}</h2>
+                    <h2>{characterDetails?.name || 'Herói'}</h2>
                   </div>
-                  {/* <div className="description">
-                    <p>{characterDetails?.description ? characterDetails?.description : 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.'}</p>
-                  </div> */}
                 </div>
               </Content>
 
               <Title>{`${characterDetails.name}'s COMICS`}</Title> 
-
               <Grid>
                 {
                   comics.length > 0 && comics.map(comic => (
-                    <ComicCard key={comic.title} image={`${comic.thumbnail.path}/portrait_uncanny.${comic.thumbnail.extension}`} title={comic?.title} />
+                    <ComicCard key={comic.title} image={`${comic?.thumbnail?.path}/portrait_uncanny.${comic?.thumbnail?.extension}`} title={comic?.title} />
                   ))
                 }
               </Grid>
             </>
           )}
-        </>
+        </>)
       }
     </Container>
     </Dialog>

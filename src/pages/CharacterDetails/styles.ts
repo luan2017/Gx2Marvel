@@ -7,10 +7,9 @@ export const Container = styled.main`
 
 export const Close = styled.div`
     cursor: pointer;
-    background-color: black;
     position: fixed;
     border-radius: 5px;
-`
+`;
 
 export const Content = styled.div`
   width: 100%;
