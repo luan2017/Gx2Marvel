@@ -96,7 +96,7 @@ const CharactersList: React.FC = () => {
                   </div>
                   </>
                 )) : 
-                listFavorites?.length > 0 && listFavorites.map((character) => (
+                listFavorites?.length > 0 ? listFavorites.map((character) => (
                   <>
                   <div key={character?.id}>
                     <IconFavorite key={character?.id} onClick={() => handleCheckFavorite(character?.id)} >{ !character.checked ? <FavoriteBorderIcon fontSize='medium' color='secondary' /> : <FavoriteIcon fontSize='medium' color='secondary'/>}</IconFavorite>
@@ -105,7 +105,11 @@ const CharactersList: React.FC = () => {
                     </div>
                   </div>
                   </>
-                )) 
+                  ))
+                  :
+                  <div className='favoriteMessage'>
+                    <h1>Sem Favoritos...</h1>
+                  </div> 
               }
         </Grid>
         : <Loading />}

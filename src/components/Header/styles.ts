@@ -37,9 +37,9 @@ export const ButtonFavorite = styled.button`
     font-weight: bold;
     color: red;
     border-radius: 5px;
-    font-size: 18px;
+    font-size: 16px;
     text-transform: uppercase;
-    padding: 7px;
+    padding: 6px;
 
     &:hover {
         transition: 0.5s;

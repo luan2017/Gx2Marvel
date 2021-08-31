@@ -26,6 +26,17 @@ export const Grid = styled.div`
     color: white;
   }
 
+  .favoriteMessage {
+    width: 89%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: cursive;
+    text-transform: lowercase;
+  }
+
 `;
 
 export const IconFavorite = styled.button`
