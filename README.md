@@ -5,7 +5,7 @@ Aplicação para listagem, busca e visualização de personagens dos quadrinhos 
 
 ## Visite o site :link:
 
-A aplicação pode ser visitada a qualquer momento pelo link: [https://marvel-app-alpha.vercel.app/](https://gx2-marvel.vercel.app/)
+A aplicação pode ser visitada a qualquer momento pelo link: [https://gx2-marvel.vercel.app/](https://gx2-marvel.vercel.app/)
 
 Publicação realizada pelo [Vercel](https://vercel.com/).
 
